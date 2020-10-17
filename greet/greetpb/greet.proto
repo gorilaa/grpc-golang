@@ -16,4 +16,6 @@ message GreetingResponse {
   string result = 1;
 }
 
-service GreetService{}
+service GreetService{
+  rpc Greet(GreetingRequest) returns (GreetingResponse) {};
+}

@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7ccbe3cf-26cb-4b24-91bd-58c5759a2c6f" name="Default Changelist" comment="" />
+    <list default="true" id="7ccbe3cf-26cb-4b24-91bd-58c5759a2c6f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/grpc-golang.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/greet/greet_client/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/greet/greet_client/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/greet/greet_server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/greet/greet_server/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/greet/greetpb/greet.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/greet/greetpb/greet.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/greet/greetpb/greet.proto" beforeDir="false" afterPath="$PROJECT_DIR$/greet/greetpb/greet.proto" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,7 +36,7 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="inlay.hints.go" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunManager">
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -52,6 +61,14 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
+    <state x="444" y="168" key="#Go" timestamp="1602912058588">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="444" y="168" key="#Go/0.0.1280.800@0.0.1280.800" timestamp="1602912058588" />
+    <state x="104" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602912383318">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="104" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1602912383318" />
     <state x="309" y="209" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602870696397">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -72,9 +89,9 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1602781719553" />
-    <state x="149" y="39" key="SettingsEditor" timestamp="1602781375977">
+    <state x="149" y="39" key="SettingsEditor" timestamp="1602912683954">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="149" y="39" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1602781375977" />
+    <state x="149" y="39" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1602912683954" />
   </component>
 </project>
