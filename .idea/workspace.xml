@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ccbe3cf-26cb-4b24-91bd-58c5759a2c6f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/grpc-golang.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/greet/greet_client/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/greet/greet_client/client.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/greet/greet_server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/greet/greet_server/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/greet/greetpb/greet.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/greet/greetpb/greet.pb.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/greet/greetpb/greet.proto" beforeDir="false" afterPath="$PROJECT_DIR$/greet/greetpb/greet.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generate-proto.sh" beforeDir="false" afterPath="$PROJECT_DIR$/generate-proto.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
