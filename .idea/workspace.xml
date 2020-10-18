@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7ccbe3cf-26cb-4b24-91bd-58c5759a2c6f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/greet/greet_client/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/greet/greet_client/client.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/greet/greet_server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/greet/greet_server/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/greet/greetpb/greet.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/greet/greetpb/greet.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculator/calculator_client/calculator_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/calculator/calculator_client/calculator_client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculator/calculator_server/calculator_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/calculator/calculator_server/calculator_server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculator/calculatorpb/calculator.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculator/calculatorpb/calculator.proto" beforeDir="false" afterPath="$PROJECT_DIR$/calculator/calculatorpb/calculator.proto" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/greet/greetpb/greet.proto" beforeDir="false" afterPath="$PROJECT_DIR$/greet/greetpb/greet.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

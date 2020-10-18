@@ -16,7 +16,6 @@ message GreetingResponse {
   string result = 1;
 }
 
-
 message GreetManyTimesRequest {
   Greeting greeting = 1;
 }

@@ -17,7 +17,7 @@ func (*server) Sum(ctx context.Context, req *calculatorpb.CalculatorRequest) (*c
   fmt.Println("Sum number", req)
   parameterOne := req.GetCalculator().GetParameterOne()
   parameterTwo := req.GetCalculator().GetParameterTwo()
-  result := parameterOne + parameterTwo;
+  result := parameterOne + parameterTwo
 
   res := &calculatorpb.CalculatorResponse{
 	CalculatorResult: result,
@@ -25,6 +25,27 @@ func (*server) Sum(ctx context.Context, req *calculatorpb.CalculatorRequest) (*c
 
   return res, nil
 }
+
+func (*server) PrimeNumberDecomposition(req *calculatorpb.DecompositionRequest, stream calculatorpb.CalculatorService_PrimeNumberDecompositionServer) error {
+  fmt.Println("Start Streaming PrimeNumberDecomposition",  req)
+  parameter := req.GetDecomposition().GetParameter()
+  divisor := int64(2)
+
+  for parameter > 1 {
+    if parameter%divisor == 0 {
+      stream.Send(&calculatorpb.DecompositionResponse{
+        DecompositionResult: divisor,
+      })
+      parameter = parameter / divisor
+    } else {
+      divisor++
+      fmt.Println("Divisor has increase to %v", divisor)
+    }
+  }
+
+  return nil
+}
+
 func main() {
   fmt.Println("Hello iam server")
   lis, err := net.Listen("tcp", "localhost:50051")
