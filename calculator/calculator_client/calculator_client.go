@@ -7,6 +7,8 @@ import (
   "grpc-golang/calculator/calculatorpb"
   "io"
   "log"
+  "os"
+  "strconv"
 )
 
 func main() {
@@ -37,9 +39,11 @@ func main() {
 
   log.Printf("Response from guets: %v", res.CalculatorResult)
 
-  //doSumUnary(c)
+  doSumUnary(c)
 
-  doStreamDecomposition(c)
+  //Stream
+  args, _ := strconv.Atoi(os.Args[1])
+  doStreamDecomposition(c, int64(args))
 }
 
 func doSumUnary(c calculatorpb.CalculatorServiceClient)  {
@@ -59,11 +63,11 @@ func doSumUnary(c calculatorpb.CalculatorServiceClient)  {
   log.Printf("Response from guets: %v", res.CalculatorResult)
 }
 
-func doStreamDecomposition(c calculatorpb.CalculatorServiceClient)  {
+func doStreamDecomposition(c calculatorpb.CalculatorServiceClient, args int64)  {
   fmt.Println("Starting to do a Streaming Server Decomposition RPC..")
   req := &calculatorpb.DecompositionRequest{
 	Decomposition: &calculatorpb.Decomposition{
-	  Parameter: 20,
+	  Parameter: args,
 	},
   }
   resDecomposition, err := c.PrimeNumberDecomposition(context.Background(), req)

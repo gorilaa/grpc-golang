@@ -33,13 +33,16 @@ func (*server) PrimeNumberDecomposition(req *calculatorpb.DecompositionRequest, 
 
   for parameter > 1 {
     if parameter%divisor == 0 {
-      stream.Send(&calculatorpb.DecompositionResponse{
+      err := stream.Send(&calculatorpb.DecompositionResponse{
         DecompositionResult: divisor,
       })
-      parameter = parameter / divisor
+
+      if err == nil {
+        parameter = parameter / divisor
+      }
     } else {
       divisor++
-      fmt.Println("Divisor has increase to %v", divisor)
+      fmt.Println("Divisor has increase to ", divisor)
     }
   }
 

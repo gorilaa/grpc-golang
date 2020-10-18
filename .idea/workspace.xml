@@ -5,9 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calculator/calculator_client/calculator_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/calculator/calculator_client/calculator_client.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calculator/calculator_server/calculator_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/calculator/calculator_server/calculator_server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculator/calculatorpb/calculator.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculator/calculatorpb/calculator.proto" beforeDir="false" afterPath="$PROJECT_DIR$/calculator/calculatorpb/calculator.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/greet/greetpb/greet.proto" beforeDir="false" afterPath="$PROJECT_DIR$/greet/greetpb/greet.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,5 +88,9 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="149" y="39" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1602912683954" />
+    <state x="482" y="173" key="refactoring.ChangeSignatureDialog" timestamp="1602998111142">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="482" y="173" key="refactoring.ChangeSignatureDialog/0.0.1280.800@0.0.1280.800" timestamp="1602998111142" />
   </component>
 </project>
