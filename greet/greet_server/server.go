@@ -1,15 +1,17 @@
 package main
 
 import (
-  "context"
-  "fmt"
+	"context"
+	"fmt"
+	"io"
 	"log"
 	"net"
 	"strconv"
-  "time"
+	"time"
 
-  "google.golang.org/grpc"
 	"grpc-golang/greet/greetpb"
+
+	"google.golang.org/grpc"
 )
 
 type server struct {}
@@ -27,7 +29,7 @@ func (*server) Greet(ctx context.Context, req *greetpb.GreetingRequest) (*greetp
 }
 
 func (*server) GreetManyTimes(req *greetpb.GreetManyTimesRequest, stream greetpb.GreetService_GreetManyTimesServer) error  {
-  fmt.Println("Greet Many Times function was invoked with %v\n", req)
+  fmt.Printf("Greet Many Times function was invoked with %v\n\n", req)
 	
 	firstName := req.GetGreeting().GetFirstName()
 	for i := 0; i < 10; i++ {
@@ -35,12 +37,34 @@ func (*server) GreetManyTimes(req *greetpb.GreetManyTimesRequest, stream greetpb
 		res := &greetpb.GreetManyTimesResponse{
 			Result: result,
 		}
-		
-		stream.Send(res)
+
+	  _ = stream.Send(res)
 		time.Sleep(1000 * time.Millisecond)
 	}
 	
 	return nil
+}
+
+func (*server) LongGreet(stream greetpb.GreetService_LongGreetServer) error {
+  fmt.Printf("Greet function was invoked with as stream request")
+  result := ""
+
+  for  {
+		req, err := stream.Recv()
+		if err == io.EOF {
+			// finished reading stream
+			return stream.SendAndClose(&greetpb.LongGreetResponse{
+				Result: result,
+			})
+		}
+
+		if err != nil {
+			log.Fatalf("Error while reading client stream: %v", err)
+		}
+
+		firstName := req.GetGreeting().GetFirstName()
+		result += "Hello " + firstName + "! "
+  }
 }
 
 func main() {
