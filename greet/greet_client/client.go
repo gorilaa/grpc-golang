@@ -45,7 +45,8 @@ func main() {
 	//doServerStreaming(c)
 
 	// Client Streaming
-	doClientStreaming(c)
+	// doClientStreaming(c)
+	doBiDiStreaming(c)
 }
 
 func doUnary(c greetpb.GreetServiceClient)  {
@@ -127,7 +128,12 @@ func doClientStreaming(c greetpb.GreetServiceClient)  {
 
 	for _, req := range requests{
 		fmt.Printf("Sending req: %v\n", req)
-		stream.Send(req)
+		sendErr := stream.Send(req)
+		
+		if sendErr != nil {
+			log.Fatalf("Error sending data: %v", err)
+		}
+		
 	  time.Sleep(1000 * time.Millisecond)
 	}
 
@@ -137,4 +143,77 @@ func doClientStreaming(c greetpb.GreetServiceClient)  {
 		log.Fatalf("Error while recieving response from long greet: %v", err)
 	}
 	fmt.Printf("LongGreet Response : %v\n", res)
+}
+
+func doBiDiStreaming(c greetpb.GreetServiceClient)  {
+  fmt.Println("Starting to do a BiDi Streaming RPC..")
+	
+	stream, err := c.GreetEveryone(context.Background())
+	if err != nil {
+		log.Fatalf("Error while calling BiDi: %v", err)
+		return
+	}
+	
+	requests := []*greetpb.GreetEveryoneRequest{
+		{
+			Greeting: &greetpb.Greeting{
+				FirstName: "Adam Lesmana",
+			},
+		},
+		{
+			Greeting: &greetpb.Greeting{
+				FirstName: "Robby Purwa",
+			},
+		},
+		{
+			Greeting: &greetpb.Greeting{
+				FirstName: "Eko Kurniawan",
+			},
+		},
+		{
+			Greeting: &greetpb.Greeting{
+				FirstName: "Gavin Khawarizmi",
+			},
+		},
+	}
+	
+	waitc := make(chan struct{})
+	// send bunch message to client (go routine)
+	go func(){
+		//function to send bunch message to client
+		for _, req := range requests {
+			fmt.Printf("Sending Message: %v\n", req)
+			sendErr := stream.Send(req)
+		
+			if sendErr != nil {
+				log.Fatalf("Error sending data: %v", err)
+			}
+			time.Sleep(1000 * time.Millisecond)
+		}
+		
+		stream.CloseSend()
+	}()
+	
+	// recieve bunch message to client (go routine)
+	go func(){
+		//function to recieve bunch message from client
+		for {
+			res, err := stream.Recv()
+			
+			if err == io.EOF {
+				break
+			}
+			if err != nil {
+				log.Fatalf("error while recieve: %v", err)
+				break
+			}
+			
+			fmt.Printf("Recieved: %v\n", res.GetResult())
+		}
+		close(waitc)
+		
+	}()
+	
+	//block until everything is done
+	<-waitc
 }

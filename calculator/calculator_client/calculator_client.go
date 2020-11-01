@@ -6,6 +6,7 @@ import (
 	"grpc-golang/calculator/calculatorpb"
 	"io"
 	"log"
+	"time"
 
 	"google.golang.org/grpc"
 )
@@ -44,7 +45,8 @@ func main() {
   // args, _ := strconv.Atoi(os.Args[1])
   // doStreamDecomposition(c, int64(args))
   
-  doStreamComputeAverage(c)
+  // doStreamComputeAverage(c)
+  doFindMaximumStreaming(c)
 }
 
 func doSumUnary(c calculatorpb.CalculatorServiceClient)  {
@@ -103,9 +105,13 @@ func doStreamComputeAverage(c calculatorpb.CalculatorServiceClient) {
   numbers := []int32{3, 5, 9, 54, 23}
   
   for _, number := range numbers {
-    stream.Send(&calculatorpb.ComputeAverageRequest{
+    sendErr := stream.Send(&calculatorpb.ComputeAverageRequest{
       Average: number,
     })
+		
+		if sendErr != nil {
+			log.Fatalf("Error sending data: %v", err)
+		}
   }
   
   res, err := stream.CloseAndRecv()
@@ -113,4 +119,52 @@ func doStreamComputeAverage(c calculatorpb.CalculatorServiceClient) {
 		log.Fatalf("Error while recieving response from Compute Average: %v", err)
 	}
 	fmt.Printf("ComputeAverage Response : %v\n", res.GetComputeAverageResult())
+}
+
+func doFindMaximumStreaming(c calculatorpb.CalculatorServiceClient) {
+  fmt.Println("Starting FindMaximum client streaming RPC ...")
+  
+  stream, err := c.FindMaximum(context.Background())
+  if err != nil {
+    log.Fatalf("Error while calling long greet: %v", err)
+  }
+  
+  waitc := make(chan struct{})
+  // send goroutine
+  go func() {
+    numbers := []int32{4, 7, 2, 19, 4, 6, 32}
+    for _, number := range numbers {
+      fmt.Printf("Sending number : %v\n", number)
+      sendErr := stream.Send(&calculatorpb.FindMaximumRequest{
+        Number: number,
+      })
+      
+      if sendErr != nil {
+        log.Fatalf("Error sending data: %v", err)
+      }
+      time.Sleep(1000 * time.Millisecond)
+    }
+    
+    stream.CloseSend()
+  }()
+  
+  // recieve goroutine
+  go func() {
+    for {
+      res, err := stream.Recv()
+      if err == io.EOF {
+        break
+      }
+      
+      if err != nil {
+        log.Fatalf("Error while reading server stream: %v", err)
+        break
+      }
+      
+      maximum := res.GetMaximum()
+      fmt.Printf("Recieve a new maximum of ...: %v\n", maximum)
+    }
+    close(waitc)
+  }()
+  <-waitc
 }
